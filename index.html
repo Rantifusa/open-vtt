@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Open VTT</title>
+</head>
+<body>
+    <p>Redirigiendo a Open VTT...</p>
+
+    <script>
+        fetch("url.txt?t=" + Date.now())
+            .then(response => response.text())
+            .then(url => {
+                url = url.trim().replace(/\/+$/, "");
+                window.location.replace(url + "/lobby");
+            })
+            .catch(error => {
+                document.body.innerHTML =
+                    "<p>No se pudo obtener la dirección de Open VTT.</p>";
+            });
+    </script>
+</body>
+</html>
